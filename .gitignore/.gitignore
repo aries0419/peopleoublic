@@ -97,11 +97,19 @@
 								<script type="text/javascript" src="<?php echo plugins_url('../../smarteditor/js/service/HuskyEZCreator.js', __FILE__)?>" charset="utf-8"></script>
 								<script type="text/javascript">
 								var oEditors = [];
+								var sLang = "ko_KR";	// 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
 								nhn.husky.EZCreator.createInIFrame({
-								oAppRef: oEditors,
-								elPlaceHolder: "kboard_content",
-								sSkinURI: "<?php echo plugins_url('../../smarteditor/SmartEditor2Skin.html', __FILE__)?>",
-								fCreator: "createSEditor2"
+									oAppRef: oEditors,
+									elPlaceHolder: "kboard_content",
+									sSkinURI: "<?php echo plugins_url('../../smarteditor/SmartEditor2Skin.html', __FILE__)?>",	
+									htParams : {
+										bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+										bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+										bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+										bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
+										I18N_LOCALE : sLang
+									}, //boolean
+									fCreator: "createSEditor2"
 								});
 								</script>
 							<?php else:?>
